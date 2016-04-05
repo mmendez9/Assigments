@@ -9,10 +9,12 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -64,14 +66,29 @@ public class TrafficLightDemo extends Application{
         hBox.setPadding(new Insets(20));
         hBox.getChildren().addAll(rbRed, rbYellow, rbGreen);
 
-        // Create a pane for the vBox and hBox
+        // Create a pane for the vBox
+        GridPane pane1 = new GridPane();
+        pane1.setPrefHeight(300);
+        pane1.setPrefWidth(100);
+        pane1.setAlignment(Pos.CENTER);
+        pane1.getChildren().addAll(vBox,hBox);
+
+        // Create a pane for the hBox
+        GridPane pane2 = new GridPane();
+        pane2.setPrefHeight(100);
+        pane2.setPrefWidth(150);
+        pane2.setAlignment(Pos.CENTER);
+        pane2.getChildren().add(hBox);
+
+        // Border pane
         BorderPane pane = new BorderPane();
-        pane.setTop(vBox);
-        pane.setBottom(hBox);
+        pane.setTop(pane1);
+        pane.setCenter(pane2);
 
         // Create the scene for the panes
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(pane, 250, 450);
         primaryStage.setTitle("Traffic Light");
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
 
