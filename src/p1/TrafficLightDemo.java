@@ -6,9 +6,12 @@ package p1;
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -49,6 +52,12 @@ public class TrafficLightDemo extends Application{
         RadioButton rbYellow = new RadioButton("Yellow");
         RadioButton rbGreen = new RadioButton("Green");
 
+        // Put the radio buttons in a group
+        ToggleGroup tg1 = new ToggleGroup();
+        rbRed.setToggleGroup(tg1);
+        rbYellow.setToggleGroup(tg1);
+        rbGreen.setToggleGroup(tg1);
+
         // Create a HBox for the radio buttons
         HBox hBox = new HBox(10);
         hBox.setStyle("-fx-background-color: grey");
@@ -66,7 +75,26 @@ public class TrafficLightDemo extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        EventHandler<ActionEvent> eventHandler = e -> {
+            if (rbRed.isSelected()) {
+                circle[0].setFill(Color.RED);
+                circle[1].setFill(Color.WHITE);
+                circle[2].setFill(Color.WHITE);
+            }
+            else if (rbYellow.isSelected()) {
+                circle[1].setFill(Color.YELLOW);
+                circle[0].setFill(Color.WHITE);
+                circle[2].setFill(Color.WHITE);
+            }
+            else if (rbGreen.isSelected()) {
+                circle[2].setFill(Color.GREEN);
+                circle[0].setFill(Color.WHITE);
+                circle[1].setFill(Color.WHITE);
+            }
+        };
 
-
+        rbRed.setOnAction(eventHandler);
+        rbYellow.setOnAction(eventHandler);
+        rbGreen.setOnAction(eventHandler);
     }
 }
