@@ -21,7 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-public class TrafficLightDemo extends Application{
+public class TrafficLightRadioButtonDemo extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
