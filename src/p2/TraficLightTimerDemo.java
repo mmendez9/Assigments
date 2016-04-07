@@ -5,21 +5,20 @@ package p2;
  */
 
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class TraficLightTimerDemo extends Application{
@@ -41,11 +40,11 @@ public class TraficLightTimerDemo extends Application{
         circle[2] = new Circle();
         circle[2].setRadius(50);
         circle[2].setStroke(Color.BLACK);
-        circle[2].setFill(Color.GREEN);
+        circle[2].setFill(Color.GREEN.brighter().brighter());
 
         // Create a VBox pane for the circles
         VBox vBox = new VBox(20);
-        vBox.setStyle("-fx-background-color: grey");
+        vBox.setStyle("-fx-background-color: gray");
         vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(circle[0], circle[1], circle[2]);
 
@@ -66,9 +65,36 @@ public class TraficLightTimerDemo extends Application{
 
         EventHandler<ActionEvent> eventHandler = e -> {
             if (circle[0].getFill() == Color.RED) {
-                circle[1].setFill(Color.WHITE);
-                circle[2].setFill(Color.WHITE);
+                circle[0].setFill(Color.DARKRED.darker());
+                circle[1].setFill(Color.YELLOW.darker().darker());
+                circle[2].setFill(Color.GREEN.brighter().brighter());
+            } else {
+                circle[0].setFill(Color.RED);
+                circle[2].setFill(Color.DARKGREEN.darker());
             }
+
+            /*if (circle[1].getFill() == Color.YELLOW) {
+                circle[1].setFill(Color.YELLOW.darker().darker());
+                circle[0].setFill(Color.RED);
+                circle[2].setFill(Color.DARKGREEN.darker());
+            } else {
+                circle[1].setFill(Color.YELLOW);
+                circle[0].setFill(Color.DARKRED.darker());
+            }*/
+
+            /*if (circle[2].getFill() == Color.GREEN.brighter().brighter()) {
+                circle[2].setFill(Color.DARKGREEN.darker());
+                circle[1].setFill(Color.YELLOW);
+                circle[0].setFill(Color.DARKRED.darker());
+            } else {
+                circle[2].setFill(Color.GREEN.brighter().brighter());
+                circle[1].setFill(Color.YELLOW.darker().darker());
+            }*/
         };
+
+        // Create an animation to trigger an event every half-second
+        Timeline animation = new Timeline(new KeyFrame(Duration.seconds(1), eventHandler));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
     }
 }
