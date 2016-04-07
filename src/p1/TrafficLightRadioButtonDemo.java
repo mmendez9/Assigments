@@ -45,7 +45,7 @@ public class TrafficLightRadioButtonDemo extends Application{
 
         // Create a VBox pane for the circles
         VBox vBox = new VBox(20);
-        vBox.setStyle("-fx-background-color: grey");
+        vBox.setStyle("-fx-border-color: black; -fx-background-color: grey");
         vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(circle[0], circle[1], circle[2]);
 

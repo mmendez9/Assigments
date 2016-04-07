@@ -1,7 +1,7 @@
 package p3;
 
 /*
- * Created by Aryam Ayala on 4/5/2016.
+ * Created by mmendez9 on 4/5/2016.
  */
 
 
@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -70,5 +69,12 @@ public class ElevatorButtonDemo extends Application{
 
         // Check the background of the button to a dark red
         buttonsArray[i-1].setStyle("-fx-font: 22 arial; -fx-base: DarkRed");
+    };
+
+    // Build an event for the test and clear buttons
+    private EventHandler<ActionEvent> TestClearEvent = e -> {
+        Button b = (Button)e.getSource();
+
+
     };
 }

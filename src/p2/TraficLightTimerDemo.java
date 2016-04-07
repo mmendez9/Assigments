@@ -40,7 +40,7 @@ public class TraficLightTimerDemo extends Application{
         circle[2] = new Circle();
         circle[2].setRadius(50);
         circle[2].setStroke(Color.BLACK);
-        circle[2].setFill(Color.GREEN.brighter().brighter());
+        circle[2].setFill(Color.GREEN.brighter());
 
         // Create a VBox pane for the circles
         VBox vBox = new VBox(20);
@@ -64,14 +64,14 @@ public class TraficLightTimerDemo extends Application{
         primaryStage.show();
 
         EventHandler<ActionEvent> eventHandler = e -> {
-            if (circle[0].getFill() == Color.RED) {
+            /*if (circle[0].getFill() == Color.RED) {
                 circle[0].setFill(Color.DARKRED.darker());
                 circle[1].setFill(Color.YELLOW.darker().darker());
-                circle[2].setFill(Color.GREEN.brighter().brighter());
+                circle[2].setFill(Color.GREEN.brighter());
             } else {
                 circle[0].setFill(Color.RED);
                 circle[2].setFill(Color.DARKGREEN.darker());
-            }
+            }*/
 
             /*if (circle[1].getFill() == Color.YELLOW) {
                 circle[1].setFill(Color.YELLOW.darker().darker());
@@ -82,14 +82,14 @@ public class TraficLightTimerDemo extends Application{
                 circle[0].setFill(Color.DARKRED.darker());
             }*/
 
-            /*if (circle[2].getFill() == Color.GREEN.brighter().brighter()) {
+            if (circle[2].getFill() == Color.GREEN) {
                 circle[2].setFill(Color.DARKGREEN.darker());
                 circle[1].setFill(Color.YELLOW);
                 circle[0].setFill(Color.DARKRED.darker());
             } else {
-                circle[2].setFill(Color.GREEN.brighter().brighter());
+                circle[2].setFill(Color.GREEN);
                 circle[1].setFill(Color.YELLOW.darker().darker());
-            }*/
+            }
         };
 
         // Create an animation to trigger an event every half-second
