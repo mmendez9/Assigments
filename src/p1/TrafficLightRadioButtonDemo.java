@@ -3,6 +3,8 @@ package p1;
 /*
  * Created by mmendez9 on 4/5/2016.
  * Traffic Light Demo
+ * Mayra Mendez
+ * April 12th, 2016
  */
 
 import javafx.application.Application;
