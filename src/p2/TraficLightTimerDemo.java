@@ -45,7 +45,7 @@ public class TraficLightTimerDemo extends Application{
 
         // Create a VBox pane for the circles
         Pane vBox = new VBox(20);
-        vBox.setStyle("-fx-border-color: black; -fx-background-color: white");
+        vBox.setStyle("-fx-border-color: black; -fx-background-color: black");
         vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(circle[0], circle[1], circle[2]);
 
@@ -66,12 +66,12 @@ public class TraficLightTimerDemo extends Application{
 
         EventHandler<ActionEvent> GreenToYellow = e -> {
             if (circle[2].getFill() == Color.GREEN) {
-                circle[2].setFill(Color.WHITE);
+                circle[2].setFill(Color.DARKGREEN.darker());
                 circle[1].setFill(Color.YELLOW);
-                circle[0].setFill(Color.WHITE);
+                circle[0].setFill(Color.DARKRED.darker());
             } else {
                 circle[2].setFill(Color.GREEN);
-                circle[1].setFill(Color.WHITE);
+                circle[1].setFill(Color.YELLOW.darker().darker());
             }
         };
         EventHandler<ActionEvent> YellowToRed = e -> {
@@ -96,10 +96,17 @@ public class TraficLightTimerDemo extends Application{
             }
         };
 
-        // Create an animation to trigger an event every half-second
-        Timeline animation = new Timeline(new KeyFrame(Duration.seconds(1), GreenToYellow),
-                new KeyFrame(Duration.seconds(1), YellowToRed), new KeyFrame(Duration.seconds(1), RedToGreen));
-        animation.setCycleCount(Timeline.INDEFINITE);
-        animation.play();
+        // Create an animation
+        Timeline animation1 = new Timeline(new KeyFrame(Duration.seconds(2), GreenToYellow));
+        animation1.setCycleCount(Timeline.INDEFINITE);
+        animation1.play();
+
+        Timeline animation2 = new Timeline(new KeyFrame(Duration.seconds(2), YellowToRed));
+        animation2.setCycleCount(Timeline.INDEFINITE);
+        animation2.play();
+
+        Timeline animation3 = new Timeline(new KeyFrame(Duration.seconds(2), RedToGreen));
+        animation3.setCycleCount(Timeline.INDEFINITE);
+        animation3.play();
     }
 }
