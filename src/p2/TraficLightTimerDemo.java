@@ -64,25 +64,7 @@ public class TraficLightTimerDemo extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        EventHandler<ActionEvent> eventHandler = e -> {
-            /*if (circle[0].getFill() == Color.RED) {
-                circle[0].setFill(Color.DARKRED.darker());
-                circle[1].setFill(Color.YELLOW.darker().darker());
-                circle[2].setFill(Color.GREEN.brighter());
-            } else {
-                circle[0].setFill(Color.RED);
-                circle[2].setFill(Color.DARKGREEN.darker());
-            }*/
-
-            /*if (circle[1].getFill() == Color.YELLOW) {
-                circle[1].setFill(Color.YELLOW.darker().darker());
-                circle[0].setFill(Color.RED);
-                circle[2].setFill(Color.DARKGREEN.darker());
-            } else {
-                circle[1].setFill(Color.YELLOW);
-                circle[0].setFill(Color.DARKRED.darker());
-            }*/
-
+        EventHandler<ActionEvent> GreenToYellow = e -> {
             if (circle[2].getFill() == Color.GREEN) {
                 circle[2].setFill(Color.WHITE);
                 circle[1].setFill(Color.YELLOW);
@@ -92,9 +74,31 @@ public class TraficLightTimerDemo extends Application{
                 circle[1].setFill(Color.WHITE);
             }
         };
+        EventHandler<ActionEvent> YellowToRed = e -> {
+            if (circle[1].getFill() == Color.YELLOW) {
+                circle[1].setFill(Color.YELLOW.darker().darker());
+                circle[0].setFill(Color.RED);
+                circle[2].setFill(Color.DARKGREEN.darker());
+            } else {
+                circle[1].setFill(Color.YELLOW);
+                circle[0].setFill(Color.DARKRED.darker());
+            }
+        };
+
+        EventHandler<ActionEvent> RedToGreen = e -> {
+            if (circle[0].getFill() == Color.RED) {
+                circle[0].setFill(Color.DARKRED.darker());
+                circle[1].setFill(Color.YELLOW.darker().darker());
+                circle[2].setFill(Color.GREEN.brighter());
+            } else {
+                circle[0].setFill(Color.RED);
+                circle[2].setFill(Color.DARKGREEN.darker());
+            }
+        };
 
         // Create an animation to trigger an event every half-second
-        Timeline animation = new Timeline(new KeyFrame(Duration.seconds(1), eventHandler));
+        Timeline animation = new Timeline(new KeyFrame(Duration.seconds(1), GreenToYellow),
+                new KeyFrame(Duration.seconds(1), YellowToRed), new KeyFrame(Duration.seconds(1), RedToGreen));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
     }
