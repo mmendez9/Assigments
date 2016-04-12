@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -43,8 +44,8 @@ public class TraficLightTimerDemo extends Application{
         circle[2].setFill(Color.GREEN.brighter());
 
         // Create a VBox pane for the circles
-        VBox vBox = new VBox(20);
-        vBox.setStyle("-fx-background-color: gray");
+        Pane vBox = new VBox(20);
+        vBox.setStyle("-fx-border-color: black; -fx-background-color: white");
         vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(circle[0], circle[1], circle[2]);
 
@@ -83,12 +84,12 @@ public class TraficLightTimerDemo extends Application{
             }*/
 
             if (circle[2].getFill() == Color.GREEN) {
-                circle[2].setFill(Color.DARKGREEN.darker());
+                circle[2].setFill(Color.WHITE);
                 circle[1].setFill(Color.YELLOW);
-                circle[0].setFill(Color.DARKRED.darker());
+                circle[0].setFill(Color.WHITE);
             } else {
                 circle[2].setFill(Color.GREEN);
-                circle[1].setFill(Color.YELLOW.darker().darker());
+                circle[1].setFill(Color.WHITE);
             }
         };
 
