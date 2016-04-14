@@ -1,7 +1,10 @@
 package p3;
 
 /*
- * Created by mmendez9 on 4/5/2016.
+ * Mayra Mendez
+ * CIS 150-401
+ * Elvator Button panel with test and clear button
+ *
  */
 
 
