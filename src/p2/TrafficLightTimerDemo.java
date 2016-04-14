@@ -6,6 +6,7 @@ package p2;
 
 
 import javafx.animation.KeyFrame;
+import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -33,23 +34,24 @@ public class TrafficLightTimerDemo extends Application{
         circle[0] = new Circle();
         circle[0].setRadius(50);
         circle[0].setStroke(Color.BLACK);
-        circle[0].setFill(Color.RED);
+        circle[0].setFill(Color.WHITE);
 
         // Circle for the Yellow light
         circle[1] = new Circle();
         circle[1].setRadius(50);
         circle[1].setStroke(Color.BLACK);
-        circle[1].setFill(Color.YELLOW);
+        circle[1].setFill(Color.WHITE);
 
         // Circle for the green light
         circle[2] = new Circle();
         circle[2].setRadius(50);
         circle[2].setStroke(Color.BLACK);
-        circle[2].setFill(Color.GREEN.brighter());
+        circle[2].setFill(Color.GREEN);
 
         // Create a VBox pane for the circles
         Pane vBox = new VBox(20);
-        vBox.setStyle("-fx-border-color: black; -fx-background-color: beige");
+        vBox.setStyle("-fx-border-radius: 20; -fx-background-radius: 20; " +
+                "-fx-border-color: black; -fx-background-color: black");
         vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(circle[0], circle[1], circle[2]);
 
@@ -69,17 +71,19 @@ public class TrafficLightTimerDemo extends Application{
         primaryStage.show();
 
         // Create an animation
-        Timeline animation1 = new Timeline(new KeyFrame(Duration.seconds(1), GreenToYellow));
-        animation1.setCycleCount(Timeline.INDEFINITE);
-        animation1.play();
+        Timeline animation1 = new Timeline(new KeyFrame(Duration.seconds(4), GreenToYellow));
+        animation1.setCycleCount(1);
 
-        /*Timeline animation3 = new Timeline(new KeyFrame(Duration.seconds(2), RedToGreen));
-        animation3.setCycleCount(Timeline.INDEFINITE);
-        animation3.play();
+        Timeline animation2 = new Timeline(new KeyFrame(Duration.seconds(3), YellowToRed));
+        animation2.setCycleCount(1);
 
-        Timeline animation2 = new Timeline(new KeyFrame(Duration.seconds(1), YellowToRed));
-        animation2.setCycleCount(Timeline.INDEFINITE);
-        animation2.play();*/
+        Timeline animation3 = new Timeline(new KeyFrame(Duration.seconds(2), RedToGreen));
+        animation3.setCycleCount(1);
+
+        // Create a sequential animation for the 3 animations
+        SequentialTransition animation = new SequentialTransition(animation1, animation2, animation3);
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
     }
 
     // Event to change from green to yellow
