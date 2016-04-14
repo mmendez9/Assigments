@@ -3,7 +3,7 @@ package p3;
 /*
  * Mayra Mendez
  * CIS 150-401
- * Elvator Button panel with test and clear button
+ * Elevator Button panel with test and clear button
  *
  */
 
@@ -105,13 +105,13 @@ public class ElevatorButtonDemo extends Application{
         int i = Integer.parseInt(b.getText());
 
         // Check the background of the button to a dark red
-        buttonsArray[i-1].setStyle("-fx-font: 22 arial; -fx-base: DarkRed");
+        buttonsArray[i-1].setStyle("-fx-font: 22 arial; -fx-base: DarkGreen");
     };
 
     // Build an event for the test button
     private EventHandler<ActionEvent> TestEvent = e -> {
         for (Button each : buttonsArray) {
-            each.setStyle("-fx-font: 22 arial; -fx-base: DarkRed");
+            each.setStyle("-fx-font: 22 arial; -fx-base: DarkGreen");
         }
     };
 
