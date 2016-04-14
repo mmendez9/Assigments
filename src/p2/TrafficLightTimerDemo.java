@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class TraficLightTimerDemo extends Application{
+public class TrafficLightTimerDemo extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Initialize three circles in the array
