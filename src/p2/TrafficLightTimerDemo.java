@@ -71,13 +71,13 @@ public class TrafficLightTimerDemo extends Application{
         primaryStage.show();
 
         // Create an animation
-        Timeline animation1 = new Timeline(new KeyFrame(Duration.seconds(4), GreenToYellow));
+        Timeline animation1 = new Timeline(new KeyFrame(Duration.seconds(15), GreenToYellow));
         animation1.setCycleCount(1);
 
-        Timeline animation2 = new Timeline(new KeyFrame(Duration.seconds(3), YellowToRed));
+        Timeline animation2 = new Timeline(new KeyFrame(Duration.seconds(2), YellowToRed));
         animation2.setCycleCount(1);
 
-        Timeline animation3 = new Timeline(new KeyFrame(Duration.seconds(2), RedToGreen));
+        Timeline animation3 = new Timeline(new KeyFrame(Duration.seconds(10), RedToGreen));
         animation3.setCycleCount(1);
 
         // Create a sequential animation for the 3 animations
