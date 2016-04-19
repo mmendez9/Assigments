@@ -36,19 +36,19 @@ public class TrafficLightTimerDemo extends Application{
         circle[0] = new Circle();
         circle[0].setRadius(50);
         circle[0].setStroke(Color.BLACK);
-        circle[0].setFill(Color.WHITE);
+        circle[0].setFill(Color.RED.darker().darker());
 
         // Circle for the yellow light
         circle[1] = new Circle();
         circle[1].setRadius(50);
         circle[1].setStroke(Color.BLACK);
-        circle[1].setFill(Color.WHITE);
+        circle[1].setFill(Color.YELLOW.darker().darker());
 
         // Circle for the green light
         circle[2] = new Circle();
         circle[2].setRadius(50);
         circle[2].setStroke(Color.BLACK);
-        circle[2].setFill(Color.GREEN);
+        circle[2].setFill(Color.GREEN.brighter().brighter());
 
         // Create a VBox pane for the circles
         Pane vBox = new VBox(20);
@@ -90,39 +90,24 @@ public class TrafficLightTimerDemo extends Application{
 
     // Event to change from green to yellow
     private EventHandler<ActionEvent> GreenToYellow = e -> {
-        if (circle[2].getFill() == Color.GREEN) {
-            circle[2].setFill(Color.WHITE);
-            circle[1].setFill(Color.YELLOW);
-            circle[0].setFill(Color.WHITE);
-        } else {
-            circle[2].setFill(Color.GREEN);
-            circle[1].setFill(Color.WHITE);
-            circle[0].setFill(Color.WHITE);
-        }
+        circle[0].setFill(Color.RED.darker().darker());
+        circle[1].setFill(Color.YELLOW.brighter().brighter());
+        circle[2].setFill(Color.GREEN.darker().darker());
+
     };
 
     // Event to change from yellow to red
     private EventHandler<ActionEvent> YellowToRed = e1 -> {
-        if (circle[1].getFill() == Color.YELLOW) {
-            circle[1].setFill(Color.WHITE);
-            circle[0].setFill(Color.RED);
-            circle[2].setFill(Color.WHITE);
-        } else {
-            circle[1].setFill(Color.YELLOW);
-            circle[0].setFill(Color.WHITE);
-        }
+        circle[0].setFill(Color.RED.brighter().brighter());
+        circle[1].setFill(Color.YELLOW.darker().darker());
+        circle[2].setFill(Color.GREEN.darker().darker());
     };
 
     // Event to change from red to green
     private EventHandler<ActionEvent> RedToGreen = e2 -> {
-        if (circle[0].getFill() == Color.RED) {
-            circle[0].setFill(Color.WHITE);
-            circle[1].setFill(Color.WHITE);
-            circle[2].setFill(Color.GREEN);
-        } else {
-            circle[0].setFill(Color.RED);
-            circle[2].setFill(Color.WHITE);
-        }
+            circle[0].setFill(Color.RED.darker().darker());
+            circle[1].setFill(Color.YELLOW.darker().darker());
+            circle[2].setFill(Color.GREEN.brighter().brighter());
     };
 
 }
