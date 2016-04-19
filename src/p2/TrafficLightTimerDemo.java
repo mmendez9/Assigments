@@ -36,7 +36,7 @@ public class TrafficLightTimerDemo extends Application{
         circle[0].setStroke(Color.BLACK);
         circle[0].setFill(Color.WHITE);
 
-        // Circle for the Yellow light
+        // Circle for the yellow light
         circle[1] = new Circle();
         circle[1].setRadius(50);
         circle[1].setStroke(Color.BLACK);
@@ -70,7 +70,7 @@ public class TrafficLightTimerDemo extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // Create an animation
+        // Create an animation for the 3 circles
         Timeline animation1 = new Timeline(new KeyFrame(Duration.seconds(15), GreenToYellow));
         animation1.setCycleCount(1);
 
