@@ -1,7 +1,9 @@
 package p2;
 
 /*
- * Created by mmendez9 on 4/5/2016.
+ * Mayra Mendez
+ * CIS 150-401
+ * Traffic Light Simulator (red light 10s, yellow light 2s, green light 15s)
  */
 
 
